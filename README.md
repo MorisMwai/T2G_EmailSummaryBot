@@ -1,6 +1,7 @@
 # 📩 T2G Email Summary Bot (UiPath REFramework)
 
-This is the **Queue Processor** component of the Talents2Germany email automation solution. It pulls structured metadata from Orchestrator, logs or stores relevant information if needed, and sends a summary notification email once all queue items are processed.
+This is the **Queue Processor** component of the Talents2Germany email automation solution.  
+It consumes email metadata from Orchestrator, optionally logs details for auditing, and sends a single summary notification once all items are processed.
 
 Built using UiPath’s Robotic Enterprise Framework (REFramework) in C#.
 
@@ -9,9 +10,19 @@ Built using UiPath’s Robotic Enterprise Framework (REFramework) in C#.
 ### 📌 What It Does
 
 - ✅ Retrieves email metadata from the Orchestrator queue (`FilteredEmailsQueue`)
-- ✅ Validates and logs the data (if needed)
-- ✅ Tracks number of processed items
-- ✅ Sends a single summary email when processing is complete
+- ✅ Logs or stores transaction details if needed
+- ✅ Tracks processed item count, including:
+  - Total processed partnership/investor emails
+  - Total processed CV-related emails
+- ✅ Sends a summary email to a configured recipient
+
+---
+
+### 🛠 Tech Stack
+
+- UiPath Studio (REFramework – C#)
+- Orchestrator Queues & Assets
+- Outlook Integration for email summary
 
 ---
 
@@ -21,16 +32,18 @@ Built using UiPath’s Robotic Enterprise Framework (REFramework) in C#.
 - Load configuration values and assets
 
 #### 2. **Get Transaction Data**
-- Retrieve queue items one at a time from `FilteredEmailsQueue`
+- Pull queue items from `FilteredEmailsQueue` one at a time until empty
 
 #### 3. **Process Transaction**
-- Increment counter
-- Track sender or log details if necessary
-- Compose summary when last item is processed
-- Send summary email via Outlook
+- Increment counters
+- Track sender details (optional logging)
+- If the item is a **summary type**, store `ProcessedEmails` and `ProcessedEmailsWithAttachments`
+- Compose and send a summary email using collected counters:
+  - `ProcessedEmails`
+  - `ProcessedEmailsWithAttachments`
 
 #### 4. **End Process**
-- Clean up resources
+- Dispose resources and log completion
 
 ---
 
@@ -41,9 +54,11 @@ Subject: Email Automation Summary – Talents2Germany
 
 Hello,
 
-The automation successfully processed 12 email inquiries from the queue.
+The automation successfully processed:
+- 10 partnership/investor emails
+- 2 CV emails with attachments
 
-Best regards,  
+Best regards,
 T2G Automation Bot
 ```
 ---
@@ -51,22 +66,21 @@ T2G Automation Bot
 ### 📂 Orchestrator Setup
 
 #### Queue
-| Name               | Purpose                                |
-|--------------------|----------------------------------------|
-| `FilteredEmailsQueue` | Holds one queue item per parsed email |
+| Name               | Purpose                                        |
+|--------------------|------------------------------------------------|
+| `FilteredEmailsQueue` | 	Holds all processed email data and summary |
 
 #### Assets
 | Name              | Type | Description                                  |
 |-------------------|------|----------------------------------------------|
-| `ExcelReportPath` | Text | Full path to Excel file in `Data\Output`     |
-| `NotificationEmail` | Text | Summary recipient (used by Handler)         |
+| `NotificationEmail` | Text | Email address to receive the summary report |
 
 ---
 
 ### 📁 Running the Bot
 
-1. Open this project in UiPath Studio (C#)
-2. Ensure Outlook is configured
-3. Update `Config.xlsx` with the correct paths and values
-4. Ensure assets and queue are created in Orchestrator
-5. Run in attended or unattended mode
+1. Open in UiPath Studio (C#)
+2. Configure Outlook for sending summary email
+3. Ensure Config.xlsx contains correct values
+4. Validate assets and queue in Orchestrator
+5. Execute in attended or unattended mode
