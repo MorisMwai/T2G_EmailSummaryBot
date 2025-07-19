@@ -104,7 +104,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="T2G_EmailSummaryBot&#xA;Processes structured email metadata from Orchestrator. Extracted from email inquiries related to partnerships and investors. Sends a summary email once all items are processed.&#xA;Moris Mwai" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1315,568.05" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="T2G_EmailSummaryBot&#xA;Processes structured email metadata from Orchestrator. Extracted from email inquiries related to partnerships and investors. Sends a summary email once all items are processed.&#xA;Moris Mwai" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1315,566.05" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -429,6 +429,18 @@
                               <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_TransactionData">
                                 <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">dt_TransactionData</CSharpReference>
                               </InOutArgument>
+                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_isMetadataRecord">
+                                <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108">isMetadataRecord</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_isSummaryRecord">
+                                <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_109">isSummaryRecord</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessedEmailsWithAttachments">
+                                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">ProcessedEmailsWithAttachments</CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessedEmail">
+                                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">ProcessedEmails</CSharpValue>
+                              </InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </TryCatch.Try>
@@ -928,7 +940,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.To>
-                    <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="200,126" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
+                    <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="466,1233" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
                       <State.Entry>
                         <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="420,1082" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                           <sap:WorkflowViewStateService.ViewState>
@@ -940,21 +952,7 @@
                           <TryCatch.Try>
                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="418,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
-                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                  <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">Config</CSharpValue>
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessedEmailsWithAttachments">
-                                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">ProcessedEmailsWithAttachments</CSharpValue>
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessedEmails">
-                                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_105">ProcessedEmails</CSharpValue>
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_isMetadataRecord">
-                                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_106">isMetadataRecord</CSharpValue>
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_isSummaryRecord">
-                                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_107">isSummaryRecord</CSharpValue>
-                                </InArgument>
+                                <scg:Dictionary x:TypeArguments="x:String, Argument" />
                               </ui:InvokeWorkflowFile.Arguments>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
