@@ -112,7 +112,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap:VirtualizedContainerService.HintSize="572,1772" sap2010:WorkflowViewState.IdRef="If_1">
+    <If DisplayName="Check if it's a Summary Record(Last Queue item)" sap:VirtualizedContainerService.HintSize="572,1772" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">in_isSummaryRecord == true</CSharpValue>
@@ -141,14 +141,14 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,183" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+            <ui:LogMessage DisplayName="Log Message - Sending Summary Email" sap:VirtualizedContainerService.HintSize="502,183" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">"Preparing to send summary email..."</CSharpValue>
                 </InArgument>
               </ui:LogMessage.Message>
             </ui:LogMessage>
-            <Assign sap:VirtualizedContainerService.HintSize="502,120" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Assign - Email Body from Config" sap:VirtualizedContainerService.HintSize="502,120" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">
                   <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">EmailBody</CSharpReference>
@@ -172,7 +172,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" BodyType="Text" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,423" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
+                    <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" BodyType="Text" DisplayName="Send Summary Email" sap:VirtualizedContainerService.HintSize="434,423" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
                       <umab:SendMailX.Account>
                         <InArgument x:TypeArguments="um:IMailQuickHandle">
                           <CSharpValue x:TypeArguments="um:IMailQuickHandle" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Gmail</CSharpValue>
@@ -221,7 +221,7 @@
                 </InArgument>
               </umab:GmailApplicationCard.ClientSecret>
             </umab:GmailApplicationCard>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,174" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+            <ui:LogMessage DisplayName="Log Message - Email Sent" sap:VirtualizedContainerService.HintSize="502,174" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">"Summary email sent successfully to: " + in_Config["SummaryNotificationEmail"].ToString()</CSharpValue>

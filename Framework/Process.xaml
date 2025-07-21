@@ -124,7 +124,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Start Time" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">StartTime</CSharpReference>
@@ -148,20 +148,20 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
           <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">in_Config</CSharpValue>
         </InArgument>
-        <InOutArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-          <CSharpReference x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">in_TransactionItem</CSharpReference>
-        </InOutArgument>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+          <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">in_TransactionItem</CSharpValue>
+        </InArgument>
         <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessedEmails">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">io_ProcessedEmails</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">io_ProcessedEmails</CSharpReference>
         </InOutArgument>
         <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessedEmailsWithAttachments">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">io_ProcessedEmailsWithAttachments</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">io_ProcessedEmailsWithAttachments</CSharpReference>
         </InOutArgument>
         <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_isSummaryRecord">
-          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">io_isSummaryRecord</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">io_isSummaryRecord</CSharpReference>
         </InOutArgument>
         <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_isMetadataRecord">
-          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">io_isMetadataRecord</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">io_isMetadataRecord</CSharpReference>
         </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
