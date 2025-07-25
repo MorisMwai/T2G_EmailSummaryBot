@@ -1,7 +1,7 @@
 {
   "name": "T2G_EmailSummaryBot",
   "projectId": "6d587029-008e-4e79-9d48-2a4d15ffa889",
-  "description": "Processes structured email metadata from Orchestrator. Extracted from email inquiries related to partnerships and investors. Sends a summary email once all items are processed.",
+  "description": "Processes structured email metadata from Orchestrator, extracted by the Dispatcher from Gmail inquiries related to partnerships and investors. Logs relevant details and sends a single summary email after all items are processed.",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[3.1.0-preview]",
@@ -14,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "25.0.167.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.1.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -100,6 +100,8 @@
   ],
   "isTemplate": false,
   "templateProjectData": {},
-  "publishData": {},
+  "publishData": {
+    "iconUrl": ".package/package-icon.png"
+  },
   "targetFramework": "Windows"
 }
